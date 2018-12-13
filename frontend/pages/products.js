@@ -5,7 +5,7 @@ import { compose } from 'recompose';
 import React, { Component } from 'react';
 import { Button, Row, Col } from 'reactstrap';
 
-class Product extends Component {
+class Products extends Component {
     constructor(props) {
         super(props);
     }
@@ -56,10 +56,12 @@ export default compose(
     withRouter,
     graphql(GET_PRODUCT_INFO, {
         options: props => {
-            variables: {
-                id: props.router.query.id
-            }
+            return {
+                variables: {
+                    id: props.router.query.id
+                }
+            };
         },
         props: ({ data }) => ({ data })
     })
-)(Product);
+)(Products);

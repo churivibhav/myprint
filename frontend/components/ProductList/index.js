@@ -1,13 +1,11 @@
 import gql from 'graphql-tag';
 import Link from 'next/link';
 import { graphql } from 'react-apollo';
-import { Button, Card, CardBody, CardColumns, CardImg, CardSubtitle } from 'reactstrap';
-import { CardText, CardTitle, Col, Row } from 'reactstrap';
+import { Card, CardBody, CardImg } from 'reactstrap';
+import { CardText, CardTitle } from 'reactstrap';
 
 const ProductList = (
-    { data: {loading, error, products}, search },
-    req
-) => {
+    { data: {loading, error, products}, search }, req) => {
     if (error) return "Error loading products";
 
     if(products && products.length) {
@@ -76,7 +74,7 @@ const query = gql`
 
 ProductList.getInitialProps = ({ req }) => {
     return { stars: 0 };
-  };
+};
 
 export default graphql(query, {
     props: ({ data }) => ({ data })
